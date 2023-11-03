@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const conexion= require('/Proyecto')
+
 /* GET home page. */
 router.get('/about', function(req, res, next) {
   res.render('student.ejs', { title: 'Rafael Funes' });

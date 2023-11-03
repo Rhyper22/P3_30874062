@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-const conexion= require('./database/bd.js')
-
 /* GET home page. */
 router.get('/about', function(req, res, next) {
   res.render('student.ejs', { title: 'Rafael Funes' });

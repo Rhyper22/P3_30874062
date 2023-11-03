@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var conexion = require('./views/database');
+var conexion = require('./database');
 
 router.get('/', function(req, res, next) {
   conexion.query('SELECT * FROM Productos', (error, results)=>{

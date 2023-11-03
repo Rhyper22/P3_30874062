@@ -6,8 +6,8 @@ router.get('/about', function(req, res, next) {
   res.render('student.ejs', { title: 'Rafael Funes' });
 });
 
-router.get('/', function(req, res, next) {
-  res.render('index.ejs', (error,results) =>{
+router.get('/', function(req, res,) {
+  conexion.query('index.ejs', (error,results) =>{
     if(error){
       throw error;
     }else{

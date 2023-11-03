@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+const conexion= require('./database/bd')
+
 /* GET home page. */
 router.get('/about', function(req, res, next) {
   res.render('student.ejs', { title: 'Rafael Funes' });
 });
 
 router.get('/', function(req, res,) {
-  conexion.query('index.ejs', (error,results) =>{
+  conexion.query('SELECT * FROM Productos', (error,results) =>{
     if(error){
       throw error;
     }else{
@@ -26,3 +28,4 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+

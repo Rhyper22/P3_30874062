@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const conexion= require('/Proyecto')
+const conexion= require('/database/bd')
 
 /* GET home page. */
 router.get('/about', function(req, res, next) {

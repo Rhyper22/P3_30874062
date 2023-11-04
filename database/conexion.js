@@ -9,4 +9,4 @@ const db = new sqlite3.Database('./database/database.db', (err) => {
     db.run('CREATE TABLE IF NOT EXISTS Images (id INTEGER PRIMARY KEY AUTOINCREMENT, url TEXT, Productos_id INTEGER, FOREIGN KEY (Productos_id) REFERENCES Productos(id))');
     console.log('Base de datos conectada');
 
-module.exports = db
+module.exports = db;

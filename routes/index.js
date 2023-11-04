@@ -15,7 +15,7 @@ router.get('/',(req, res,) => {
       res.render('index', {productos: data});
     })
     .catch(err => {
-      res.render('index', {products: []});	
+      res.render('index', {productos: []});	
     })
 
   }
@@ -31,7 +31,7 @@ router.get('/about', function(req, res, next) {
 router.get('/', (req, res) =>{
   db.obtproductos()
   .then(data =>{
-    res.render('index', {products: data});
+    res.render('index', {productos: data});
   })
 })
 
@@ -58,11 +58,6 @@ router.post('/insert-product', (req, res) =>{
   })
 })
 
-
-
-router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'Form_User'});
-});
 
 // EDITAR PRODUCTOS
 router.get('/edit/:id', (req, res) =>{

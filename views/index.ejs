@@ -27,29 +27,29 @@
               </tr>
             </thead>
             <tbody>
-              <% productos.forEach(user=> { %>
+              <% productos.forEach(Producto=> { %>
               <tr>
-                <td><%=user.id%></td>
-                <td><%=user.Nombre%></td>
-                <td><%=user.Codigo%></td>
-                <td><%=user.Precio%></td>
-                <td><%=user.Descripcion%></td>
-                <td><%=user.FCardiaca%></td>
-                <td><%=user.DRecorrida%></td>
-                <td><%=user.Correo%></td>
-                <td><% if (user.categoria_id == 1) { %></td>
+                <td><%=producto.id%></td>
+                <td><%=producto.Nombre%></td>
+                <td><%=producto.Codigo%></td>
+                <td><%=producto.Precio%></td>
+                <td><%=producto.Descripcion%></td>
+                <td><%=producto.FCardiaca%></td>
+                <td><%=producto.DRecorrida%></td>
+                <td><%=producto.Correo%></td>
+                <td><% if (producto.categoria_id == 1) { %></td>
                   Sony
-                <% } else if (user.categoria_id == 2) { %></td>
+                <% } else if (producto.categoria_id == 2) { %></td>
                   Samsung
-                <% } else if (user.categoria_id == 3) { %></td>
+                <% } else if (producto.categoria_id == 3) { %></td>
                   Apple
-                <% } else if (user.categoria_id == 4) { %></td>
+                <% } else if (producto.categoria_id == 4) { %></td>
                   LG
-                <% } else if (user.categoria_id == 5) { %></td>
+                <% } else if (producto.categoria_id == 5) { %></td>
                   Samsung Gear 2
-                <% } else if (user.categoria_id == 6) { %></td>
+                <% } else if (producto.categoria_id == 6) { %></td>
                   Motorola
-                <% } else if (user.categoria_id == 7) { %></td>
+                <% } else if (producto.categoria_id == 7) { %></td>
                   Huawei
                 <% } %>
                 

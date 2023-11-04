@@ -47,7 +47,7 @@ router.get('/insert', (req, res) =>{
   res.render('insert');
 });
 
-router.post('/insert-product', (req, res) =>{
+router.post('/insert-Productos', (req, res) =>{
   const {Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id} = req.body;
   db.insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
   .then(() =>{

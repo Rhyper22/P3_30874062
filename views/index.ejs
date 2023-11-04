@@ -12,7 +12,7 @@
     
     
         <div class="container"> 
-          <a href="" class="button"><i class='bx bxs-plus-circle bx-md'></i></a>
+          <a href="/insert" class="button"><i class='bx bxs-plus-circle bx-md'></i></a>
           <table class="table table-bordered table-striped text-center mt-4">
             <thead>
               <tr>
@@ -28,7 +28,7 @@
                 <th scope="col">Categoría</th>
               </tr>
             </thead>
-              <% results.ForEach((user)=> { %>
+              <% results.ForEach(user=> { %>
               <tr>
                 <td><%=user.ID%></td>
                 <td><%=user.Name%></td>
@@ -38,7 +38,7 @@
                 <td><%=user.CFrecuency%></td>
                 <td><%=user.RDistancy%></td>
                 <td><%=user.Email%></td>
-                <td><% if user.categoria_id == 1) { %></td>
+                <td><% if (user.categoria_id == 1) { %></td>
                   Sony
                 <% } else if (user.categoria_id == 2) { %></td>
                   Samsung

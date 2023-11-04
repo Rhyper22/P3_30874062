@@ -1,31 +1,128 @@
 var express = require('express');
 var router = express.Router();
+const db = require('../database/models');
+require('dotenv').config()
 
-const conexion= require('./database/bd')
+//LOGIN DE USUARIO
+let login = false;
+
+router.get('/',(req, res,) => {
+  if(login){
+    res.render('login');
+  }else{
+    db.obtproductos()
+    .then(data => {
+      res.render('index', {productos: data});
+    })
+    .catch(err => {
+      res.render('index', {products: []});	
+    })
+
+  }
+});
+
 
 /* GET home page. */
 router.get('/about', function(req, res, next) {
   res.render('student.ejs', { title: 'Rafael Funes' });
 });
 
-router.get('/', function(req, res,) {
-  conexion.query('SELECT * FROM Productos', (error,results) =>{
-    if(error){
-      throw error;
-    }else{
-      res.render('index.ejs', {results:results});
-    }
-  });
+//MOSTRAR CATEGORIAS
+router.get('/', (req, res) =>{
+  db.obtproductos()
+  .then(data =>{
+    res.render('index', {products: data});
+  })
+})
+
+router.get('/categorias', (req, res) =>{
+  db.obtcategorias()
+  .then(data =>{
+    res.render('categorias', {categorias: data});
+  })
+})
+
+//INSERTAR PRODUCTOS
+router.get('/insert', (req, res) =>{
+  res.render('insert');
 });
 
-//CREAR REGISTROS
-router.get('/create', function(req, res, next) {
-  res.render('create.ejs', { title: 'Creación' });
-});
+router.post('/insert-product', (req, res) =>{
+  const {Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id} = req.body;
+  db.insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
+  .then(() =>{
+    res.redirect('/');
+  })
+  .catch(err =>{
+    console.log(err);
+  })
+})
+
+
 
 router.get('/', function(req, res, next) {
   res.render('index.ejs', { title: 'Form_User'});
 });
+
+// EDITAR PRODUCTOS
+router.get('/edit/:id', (req, res) =>{
+  const {id} = req.params.id;
+  db.obtproductoid(id)
+  .then(data =>{
+    res.render('edit', {producto: data[0]});
+  })
+  .catch(err =>{
+    console.log(err);
+    res.render('edit', {producto: []});
+  })
+})
+
+router.post('/edit/', (req, res) =>{
+  const {id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id} = req.body;
+  db.editproductos(id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
+  .then(() =>{
+    res.redirect('/');
+  })
+  .catch(err =>{
+    console.log(err);
+  })
+})
+
+
+  router.post('/edit/:id', (req, res) => {
+    const {id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id}= req.body.id;
+    db.obtproductoid(id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
+      .then(data =>{
+        res.render('edit', {producto: data});
+      }) 
+      .catch(err =>{
+        console.log(err);
+        res.render('edit', {producto: []});
+      });
+    })
+
+    //ELIMINAR PRODUCTOS
+    router.get('/delete/:id', (req, res) => {
+      const id = req.params.id;
+      db.deleteProductos(id)
+        .then(() =>{
+          res.redirect('/');
+        })
+        .catch(err =>{
+          console.log(err);
+        })
+    })
+
+    router.post('/login', (req, res) => {
+      const {user, pass} = req.body;
+      if(user === process.env.USER_ADMIN && pass === process.env.PASS_ADMIN){
+        login = true;
+        res.redirect('/');
+      }else{
+        login = false;
+        res.redirect('/');
+      }
+    })
 
 module.exports = router;
 

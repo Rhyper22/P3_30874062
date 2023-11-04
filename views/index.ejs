@@ -25,9 +25,9 @@
                 <th scope="col">DRecorrida</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Acciones</th>
+                <th scope="col">Categoría</th>
               </tr>
             </thead>
-            <tbody>
               <% results.ForEach((user)=> { %>
               <tr>
                 <td><%=user.ID%></td>
@@ -38,14 +38,26 @@
                 <td><%=user.CFrecuency%></td>
                 <td><%=user.RDistancy%></td>
                 <td><%=user.Email%></td>
-                <td>
-                <a href="/edit.ejs" class="btn btn-outline-info">Editar</a>
-                <a href="/delete.ejs" class="btn btn-outline-danger">Borrar</a>
-                </td>
+                <td><% if user.categoria_id == 1) { %></td>
+                  Sony
+                <% } else if (user.categoria_id == 2) { %></td>
+                  Samsung
+                <% } else if (user.categoria_id == 3) { %></td>
+                  Apple
+                <% } else if (user.categoria_id == 4) { %></td>
+                  LG
+                <% } else if (user.categoria_id == 5) { %></td>
+                  Samsung Gear 2
+                <% } else if (user.categoria_id == 6) { %></td>
+                  Motorola
+                <% } else if (user.categoria_id == 7) { %></td>
+                  Huawei
+                <% } %>
                 
+                <td><a href="/edit/<%= user.ID %>"></a>Editar</td>
+                <td><a href="/delete/<%= user.ID %>"></a>Borrar</td>
               </tr>
-              <% }) %>
-            </tbody>
+              <% }); %>
           </table>
         </div>
       </body>

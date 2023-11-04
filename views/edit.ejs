@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+</head>
+<body>
+    <form action="/edit/" method="POST">
+        <input type="hidden" name="id" value="<%= user.ID %>">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="Nombre" id="Nombre" value="<%= user.Name %>" placeholder="Nombre" required>
+        <label for="Codigo">Codigo</label>
+        <input type="text" name="Codigo" id="Codigo" value="<%= user.Code %>" placeholder="Codigo" required>
+        <label for="Precio">Precio</label>
+        <input type="text" name="Precio" id="Precio" value="<%= user.Price %>" placeholder="Precio" required>
+        <label for="Descripcion">Descripcion</label>
+        <input type="text" name="Descripcion" id="Descripcion" value="<%= user.Description %>" placeholder="Descripcion" required>
+        <label for="FCardiaca">FCardiaca</label>
+        <input type="text" name="FCardiaca" id="FCardiaca" value="<%= user.CFrecuency %>" placeholder="FCardiaca" required>
+        <label for="DRecorrida">DRecorrida</label>
+        <input type="text" name="DRecorrida" id="DRecorrida" value="<%= user.RDistancy %>" placeholder="DRecorrida" required>
+        <label for="Correo">Correo</label>
+        <input type="text" name="Correo" id="Correo" value="<%= user.Email %>" placeholder="Correo" required>
+        <label for="categoria_id">Categoria</label>
+        <select name="categoria_id" required>
+            <option value="1">Sony</option>
+            <option value="2">Samsung</option>
+            <option value="3">Apple</option>
+            <option value="4">LG</option>
+            <option value="5">Samsung Gear 2</option>
+            <option value="6">Motorola</option>
+            <option value="7">Huawei</option>
+        </select>
+        <button type="submit">Editar</button>
+    </form>
+</body>
+</html>

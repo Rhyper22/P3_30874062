@@ -20,21 +20,23 @@
                 <th scope="col">FCardiaca</th>
                 <th scope="col">DRecorrida</th>
                 <th scope="col">Correo</th>
-                <th scope="col">Acciones</th>
-                <th scope="col">Categoría</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Accion</th>
+                <th scope="col">Accion</th>
+
               </tr>
             </thead>
             <tbody>
               <% productos.forEach(user=> { %>
               <tr>
-                <td><%=user.ID%></td>
-                <td><%=user.Name%></td>
-                <td><%=user.Code%></td>
-                <td><%=user.Price%></td>
-                <td><%=user.Description%></td>
-                <td><%=user.CFrecuency%></td>
-                <td><%=user.RDistancy%></td>
-                <td><%=user.Email%></td>
+                <td><%=user.id%></td>
+                <td><%=user.Nombre%></td>
+                <td><%=user.Codigo%></td>
+                <td><%=user.Precio%></td>
+                <td><%=user.Descripcion%></td>
+                <td><%=user.FCardiaca%></td>
+                <td><%=user.DRecorrida%></td>
+                <td><%=user.Correo%></td>
                 <td><% if (user.categoria_id == 1) { %></td>
                   Sony
                 <% } else if (user.categoria_id == 2) { %></td>

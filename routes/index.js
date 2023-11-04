@@ -22,19 +22,8 @@ router.get('/',(req, res,) => {
 });
 
 
-/* GET home page. */
-router.get('/about', function(req, res, next) {
-  res.render('student.ejs', { title: 'Rafael Funes' });
-});
 
 //MOSTRAR CATEGORIAS
-router.get('/', (req, res) =>{
-  db.obtproductos()
-  .then(data =>{
-    res.render('index', {productos: data});
-  })
-})
-
 router.get('/categorias', (req, res) =>{
   db.obtcategorias()
   .then(data =>{

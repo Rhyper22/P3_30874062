@@ -7,7 +7,7 @@ require('dotenv').config()
 let login = false;
 
 router.get('/',(req, res,) => {
-  if(login){
+  if(!login){
     res.render('login');
   }else{
     db.obtproductos()

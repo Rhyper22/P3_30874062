@@ -21,6 +21,15 @@ router.get('/',(req, res,) => {
   }
 });
 
+router.get('/', (req, res) =>{
+  db.obtproductos()
+  .then(data =>{
+    res.render('index', {productos: data});
+  })
+  .catch(err =>{
+    res.render('index', {productos: []});
+  })
+})
 
 
 //MOSTRAR CATEGORIAS
@@ -50,8 +59,8 @@ router.post('/insert-Productos', (req, res) =>{
 
 // EDITAR PRODUCTOS
 router.get('/edit/:id', (req, res) =>{
-  const {id} = req.params.id;
-  db.obtproductoid(id)
+  const id = req.params.id;
+  db.obtproductosid(id)
   .then(data =>{
     res.render('edit', {producto: data[0]});
   })
@@ -61,16 +70,17 @@ router.get('/edit/:id', (req, res) =>{
   })
 })
 
+
 router.post('/edit/', (req, res) =>{
   const {id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id} = req.body;
-  db.editproductos(id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
+  db.editProductos(id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
   .then(() =>{
     res.redirect('/');
   })
   .catch(err =>{
     console.log(err);
-  })
-})
+  });
+});
 
 
   router.post('/edit/:id', (req, res) => {
@@ -107,6 +117,12 @@ router.post('/edit/', (req, res) =>{
         res.redirect('/');
       }
     })
+
+    router.get('../views/about', (req, res) =>{
+      res.render('about');
+    });
+
+
 
 module.exports = router;
 

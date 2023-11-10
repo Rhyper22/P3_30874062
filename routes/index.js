@@ -46,8 +46,8 @@ router.get('/insert', (req, res) =>{
 });
 
 router.post('/insert-Productos', (req, res) =>{
-  const {Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id} = req.body;
-  db.insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
+  const {Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id, Image} = req.body;
+  db.insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id, Image)
   .then(() =>{
     res.redirect('/');
   })
@@ -121,7 +121,6 @@ router.post('/edit/', (req, res) =>{
     router.get('../views/about', (req, res) =>{
       res.render('about');
     });
-
 
 
 module.exports = router;

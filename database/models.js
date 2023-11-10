@@ -5,7 +5,8 @@ let querys = {
     obtproductos: 'SELECT * FROM Productos',
     obtproductosid: 'SELECT * FROM Productos WHERE id = ?',
     obtcategorias: 'SELECT * FROM Categorias',
-    insertProductos: 'INSERT INTO Productos (Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    insertProductos: 'INSERT INTO Productos (Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id, Image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    insertCategorias: 'INSERT INTO Categorias (Nombre) VALUES (?)',
     editProductos: 'UPDATE Productos SET Nombre = ?, Codigo = ?, Precio = ?, Descripcion = ?, FCardiaca = ?, DRecorrida = ?, Correo = ?, categoria_id = ? WHERE id = ?',
     deleteProductos: 'DELETE FROM Productos WHERE id = ?'
 };
@@ -43,9 +44,9 @@ obtcategorias() {
     });
 },
 
-insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id) {
+insertProductos(Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, Image, categoria_id) {
     return new Promise((resolve, reject) => {
-        db.run(querys.insertProductos, [Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id], (err) => {
+        db.run(querys.insertProductos, [Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, Image, categoria_id], (err) => {
             if (err) reject(err);
             resolve();
         })

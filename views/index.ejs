@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/categoria">Categorias</a>
+              <a class="nav-link active" aria-current="page" href="/categorias">Categorias</a>
             </li>
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -44,6 +44,7 @@
             <th>DRecorrida</th>
             <th>Correo</th>
             <th>Categoria</th>
+            <th>Image</th>
             <th>Accion</th>
           </tr>
         </thead>
@@ -61,17 +62,33 @@
             <td><% if(producto.categoria_id == 1) { %>
               Sony
             <% } else if(producto.categoria_id == 2) { %>
-              Samsung
+              Samsung 
             <% } else if(producto.categoria_id == 3) { %>
-              Apple
+              Apple 
             <% } else if(producto.categoria_id == 4) { %>
-              LG
+              LG 
             <% } else if(producto.categoria_id == 5) { %>
-              Samsung Gear 2
+              Samsung Gear 2 
             <% } else if(producto.categoria_id == 6) { %>
-              Motorola
+              Motorola 
             <% } else if(producto.categoria_id == 7) { %>
-              Huawei
+              Huawei 
+            <% } %></td>
+
+            <td><% if(producto.Image == 1) { %>
+              <img src="../public/images/sony.jpg" alt="">
+            <% } else if(producto.Image == 2) { %>
+              <img src="../public/images/samsung.jpg" alt="">
+            <% } else if(producto.Image == 3) { %>
+              <img src="../public/images/apple.jpg" alt="">
+            <% } else if(producto.Image == 4) { %>
+              <img src="../public/images/lg.jpg" alt="">
+            <% } else if(producto.Image == 5) { %>
+              <img src="../public/images/samsung gear 2.jpg" alt="">
+            <% } else if(producto.Image == 6) { %>
+              <img src="../public/images/motorola.jpg" alt="">
+            <% } else if(producto.Image == 7) { %>
+              <img src="../public/images/huawei.jpg" alt="">
             <% } %></td>
 
             <td><a class="btn btn-primary" href="/edit/<%= producto.id %>">Editar</a>

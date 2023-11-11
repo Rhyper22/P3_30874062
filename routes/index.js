@@ -169,12 +169,26 @@ router.post('/edit/', (req, res) =>{
       res.render('add-image', {id: id});
     })
 
-    router.post('/cargar-img', uploads.array('img', 4) ,(req, res) => {
+    router.post('/cargar-img/:id', uploads.array('img', 4) ,(req, res) => {
 
-      console.log(outputArray)
-     });
+      try{
 
+        const { id } = req.params;
+        const inputArray = req.files;
+        const outputArray = inputArray.map((item, index) => {
+          return {
+            name: item.originalname,
+            maxCount: 1,
+            destacado: index === 0   
+          };
+        });
 
-  
+        console.log(outputArray);
+
+       } catch (error) {
+         console.log(error);
+      }
+      });
+
 module.exports = router;
 

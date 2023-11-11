@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../database/models');
+const uploads = require('../routes/multer');
 require('dotenv').config()
 
 //LOGIN DE USUARIO
@@ -161,6 +162,17 @@ router.post('/edit/', (req, res) =>{
           console.log(err);
         })
     })
+
+    //AGREGAR IMAGENES
+    router.get('/add-image/:id', (req, res) =>{
+      const id = req.params.id;
+      res.render('add-image', {id: id});
+    })
+
+    router.post('/cargar-img', uploads.array('img', 4) ,(req, res) => {
+
+      console.log(outputArray)
+     });
 
 
   

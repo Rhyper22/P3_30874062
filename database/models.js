@@ -8,6 +8,7 @@ let querys = {
     obtcategoriasid: 'SELECT * FROM Categorias WHERE id = ?',  
     insertProductos: 'INSERT INTO Productos (Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id, Image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
     insertCategorias: 'INSERT INTO Categorias (Nombre) VALUES (?)',
+    insertImages: 'INSERT INTO Images (url, Productos_id) VALUES (?, ?)',
     editCategorias: 'UPDATE Categorias SET Nombre = ? WHERE id = ?',
     editProductos: 'UPDATE Productos SET Nombre = ?, Codigo = ?, Precio = ?, Descripcion = ?, FCardiaca = ?, DRecorrida = ?, Correo = ?, categoria_id = ? WHERE id = ?',
     deleteProductos: 'DELETE FROM Productos WHERE id = ?',
@@ -110,6 +111,16 @@ insertCategorias(Nombre) {
             resolve();
         })
     })
+},
+
+insertImages(url, Productos_id) {
+    return new Promise((resolve, reject) => {
+        db.run(querys.insertImages, [url, Productos_id], (err) => {
+            if (err) reject(err);
+            resolve();
+        })
+    })
 }
- };
+};
+ 
  

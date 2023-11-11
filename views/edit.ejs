@@ -31,21 +31,21 @@
     <form action="/edit/" method="post">
         <input type="hidden" value="<%= producto.id%>" name="id">
         <label for="Nombre">Nombre</label>
-        <input class="mb-3" type="text" name="Nombre" id="Nombre" value="<%= producto.Nombre %>" placeholder="Nombre" required>
+        <input class="form-control" type="text" name="Nombre" id="Nombre" value="<%= producto.Nombre %>" placeholder="Nombre" required>
         <label for="Codigo">Codigo</label>
-        <input class="mb-3" type="number" name="Codigo" id="Codigo" value="<%= producto.Codigo %>" placeholder="Codigo" required>
+        <input class="form-control" type="number" name="Codigo" id="Codigo" value="<%= producto.Codigo %>" placeholder="Codigo" required>
         <label for="Precio">Precio</label>
-        <input class="mb-3" type="number" name="Precio" id="Precio" value="<%= producto.Precio %>" placeholder="Precio" required>
+        <input class="form-control" type="number" name="Precio" id="Precio" value="<%= producto.Precio %>" placeholder="Precio" required>
         <label for="Descripcion">Descripcion</label>
-        <input class="mb-3" type="text" name="Descripcion" id="Descripcion" value="<%= producto.Descripcion %>" placeholder="Descripcion" required>
+        <input class="form-control" type="text" name="Descripcion" id="Descripcion" value="<%= producto.Descripcion %>" placeholder="Descripcion" required>
         <label for="FCardiaca">FCardiaca</label>
-        <input class="mb-3" type="number" name="FCardiaca" id="FCardiaca" value="<%= producto.FCardiaca %>" placeholder="FCardiaca" required>
+        <input class="form-control" type="number" name="FCardiaca" id="FCardiaca" value="<%= producto.FCardiaca %>" placeholder="FCardiaca" required>
         <label for="DRecorrida">DRecorrida</label>
-        <input class="mb-3" type="number" name="DRecorrida" id="DRecorrida" value="<%= producto.DRecorrida %>" placeholder="DRecorrida" required>
+        <input class="form-control" type="number" name="DRecorrida" id="DRecorrida" value="<%= producto.DRecorrida %>" placeholder="DRecorrida" required>
         <label for="Correo">Correo</label>
-        <input class="mb-3" type="text" name="Correo" id="Correo" value="<%= producto.Correo %>" placeholder="Correo" required>
+        <input class="form-control" type="text" name="Correo" id="Correo" value="<%= producto.Correo %>" placeholder="Correo" required>
         <label for="categoria_id">Categoria</label>
-        <select class="mb-3" name="categoria_id" id="categoria_id"required>
+        <select class="form-select" aria-label="Default select example" name="categoria_id" id="categoria_id"required>
             <option value="1">Sony</option>
             <option value="2">Samsung</option>
             <option value="3">Apple</option>

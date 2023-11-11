@@ -21,6 +21,17 @@ router.get('/',(req, res,) => {
   }
 });
 
+router.post('/login', (req, res) => {
+  const {user, pass} = req.body;
+  if(user === process.env.USER_ADMIN && pass === process.env.PASS_ADMIN){
+    login = true;
+    res.redirect('/');
+  }else{
+    login = false;
+    res.redirect('/');
+  }
+})
+
 router.get('/about', (req, res) =>{
   res.render('about');
 });
@@ -151,18 +162,7 @@ router.post('/edit/', (req, res) =>{
         })
     })
 
-   //LOGIN Y CONTRASEÑAS
 
-    router.post('/login', (req, res) => {
-      const {user, pass} = req.body;
-      if(user === process.env.USER_ADMIN && pass === process.env.PASS_ADMIN){
-        login = true;
-        res.redirect('/');
-      }else{
-        login = false;
-        res.redirect('/');
-      }
-    })
   
 module.exports = router;
 

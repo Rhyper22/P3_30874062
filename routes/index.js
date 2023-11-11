@@ -21,6 +21,11 @@ router.get('/',(req, res,) => {
   }
 });
 
+router.get('/about', (req, res) =>{
+  res.render('about');
+});
+
+//MOSTRAR PRODUCTOS
 router.get('/', (req, res) =>{
   db.obtproductos()
   .then(data =>{
@@ -31,6 +36,21 @@ router.get('/', (req, res) =>{
   })
 })
 
+//INSERTAR CATEGORIAS
+router.get('/insert-categoria', (req, res) =>{
+  res.render('insert-categoria');
+})
+
+router.post('/insert-categoria', (req, res) =>{
+  const {categoria_id} = req.body;
+  db.insertCategorias(categoria_id)
+  .then(() =>{
+    res.redirect('/categorias');
+  })
+  .catch(err =>{
+    console.log(err);
+  })
+})
 
 //MOSTRAR CATEGORIAS
 router.get('/categorias', (req, res) =>{
@@ -39,6 +59,32 @@ router.get('/categorias', (req, res) =>{
     res.render('categorias', {categorias: data});
   })
 })
+
+//EDITAR CATEGORIAS
+router.get('/edit-categorias/:id', (req, res) =>{
+  const id = req.params.id;
+  db.obtcategoriasid(id)
+  .then(data =>{
+    res.render('edit-categorias', {categoria: data[0]});
+  })
+  .catch(err =>{
+    console.log(err);
+    res.render('edit-categorias', {categoria: []});
+  })
+})
+
+router.post('/edit-categorias/', (req, res) =>{
+  const {id, Nombre} = req.body;
+  db.editCategorias(id, Nombre)
+  .then(() =>{
+    res.redirect('/categorias');
+  })
+  .catch(err =>{
+    console.log(err);
+  });
+})
+
+
 
 //INSERTAR PRODUCTOS
 router.get('/insert', (req, res) =>{
@@ -82,18 +128,16 @@ router.post('/edit/', (req, res) =>{
   });
 });
 
-
-  router.post('/edit/:id', (req, res) => {
-    const {id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id}= req.body.id;
-    db.obtproductoid(id, Nombre, Codigo, Precio, Descripcion, FCardiaca, DRecorrida, Correo, categoria_id)
-      .then(data =>{
-        res.render('edit', {producto: data});
-      }) 
-      .catch(err =>{
-        console.log(err);
-        res.render('edit', {producto: []});
-      });
-    })
+   router.get('/delete-categorias/:id', (req, res) =>{
+     const id = req.params.id;
+     db.deleteCategorias(id)
+     .then(() =>{
+       res.redirect('/categorias');
+     })
+     .catch(err =>{
+       console.log(err);
+     })
+   })
 
     //ELIMINAR PRODUCTOS
     router.get('/delete/:id', (req, res) => {
@@ -107,6 +151,8 @@ router.post('/edit/', (req, res) =>{
         })
     })
 
+   //LOGIN Y CONTRASEÑAS
+
     router.post('/login', (req, res) => {
       const {user, pass} = req.body;
       if(user === process.env.USER_ADMIN && pass === process.env.PASS_ADMIN){
@@ -117,11 +163,6 @@ router.post('/edit/', (req, res) =>{
         res.redirect('/');
       }
     })
-
-    router.get('../views/about', (req, res) =>{
-      res.render('about');
-    });
-
-
+  
 module.exports = router;
 

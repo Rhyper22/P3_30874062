@@ -136,3 +136,20 @@ body {
 .submit:active {
   background-color: #06b;
 }
+
+.fondito{
+  background-color: #000;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+}
+
+.rafa{
+  color: blue;
+}
+
+.fondito2{
+  color: blue;
+}

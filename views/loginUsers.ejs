@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Users</title>
+	<link rel="icon" type="image/x-icon" href="/img/reloj.png" />
+	<style type="text/css">
+		@font-face{
+            font-family:'dali';
+            src:url(/fuentes/TokyoTaiyakiDEMO-Regular.otf);
+           }
+		body{
+			background: -webkit-radial-gradient(center,ellipse,rgb(116, 188, 243),rgb(0,0,0));
+		}
+		form{
+			display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            border:1px solid white;
+            border-radius:30px;
+            margin:2% auto;
+            width:50%;
+            height:auto;
+            padding: 10px;
+            background:rgba(0,0,0,.6);
+		}
+		.divInfo{
+			display: flex;
+			flex-direction:column;
+			justify-content: center;
+			align-items: center;
+		}
+		input{
+			padding:5px;
+			border-radius:10px;
+			text-align: center;
+		}
+		label{
+			margin-bottom:20px;
+			margin-top:20px;
+			color:white;
+			font-weight: bold;
+			font-size:1.5rem;
+		}
+		h1{
+			font:2.5rem 'dali';
+			text-align:center;
+			color:black;
+             text-shadow:15px 15px 15px white;
+		}
+		#divTitulo{
+			width:40%;
+			margin:50px auto;
+		}
+		#enviar{
+			cursor: pointer;
+			margin-top:10px;
+		}
+		p{
+		 margin-right: 1rem;
+		}
+		a{
+			color:rgb(252, 236, 183);
+			text-decoration: none;
+			font-size:1rem;
+		}
+	</style>
+	<link rel="icon" type="image/x-icon" href="img/mascotas.png" />
+</head>
+<body>
+	<div id='divTitulo'>
+		<h1>Inicio de Sesion</h1>
+	</div>
+
+
+<form action="/loginUsers" method="post">
+
+<div class='divInfo'>
+ <label>Correo Electronico</label>
+ <input type="email" name="email" required>
+</div>
+
+<div class='divInfo'>
+ <label>Contraseña</label>
+ <input type="password" name="password" required>	
+</div>
+
+<div class='divInfo'>
+	<input type="submit" value="Iniciar" id='enviar'>
+</div>
+
+<div style='display:flex;justify-content: center;align-items: center;color:white'>
+ <p>¿No tienes una cuenta? registrate aqui </p>
+ <a href="/registroUsers">Registro</a>
+
+</div>
+
+</form>
+
+</body>
+</html>

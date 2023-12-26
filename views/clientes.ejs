@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</meta>
+<link rel="icon" type="image/x-icon" href="/img/reloj.png" />
+<link rel="stylesheet" href="/css/clientes.css">
+
+<head>
+    <title>Clientes</title>
+</head>
+<body>
+
+    <nav>
+
+     <input class="form-control" id="buscarPrincipal" type="search" placeholder="Buscar" aria-label="Buscar Producto..." style='border-radius:10px'/>
+
+
+
+     <button onclick="buscarProductos()"  id='boton3'>Buscar</button>
+
+     <a href="/">Inicio</a>   
+     <a aria-current="page" href="#h2productos">Productos</a>  
+     <a aria-current="page" href="/logout">salir</a>
+
+
+ </nav>
+
+ <!-- Masthead-->
+ <header>
+
+     <h1>Reloj Inteligente</h1>
+
+ </header>
+
+
+ <!-- Services-->
+ <section style='width:100%;'>
+    <div class="container">
+
+    </div>
+</section>
+<!-- Portfolio Grid-->
+
+
+<section class="section">
+    <h2 id='h2productos'>PRODUCTOS</h2>
+    <div class="my-5">
+
+        <div class="row justify-content-center">
+
+           <button id='botonCuadricula' onClick="cuadricula()"><img src="/img/menu.png" class='botonC'></button>
+
+           <div class='product' id='listaDeProductos'>
+
+            <%for(let x = 0;x < producto.length;x++){%>
+
+            <div class='productooo'>
+
+                <div style='display:flex;flex-direction: column;justify-content:center;align-items: center;width:100%;height:auto;'>
+                    <img src="<%= producto[x].imagen_url %>" class='imagen' id='imagenSelector'>
+
+
+                    <div id='NPB'>
+
+                       <div style='display:flex;flex-direction: column;justify-content:center;align-items:center'>
+                        <strong><p>Nombre:</strong><%= producto[x].nombre %></p>
+                        <strong><p>Precio: </strong><span style='color:rgb(9, 247, 56)'><%= producto[x].precio %> $</span></p>
+
+                    </div>
+
+                    <div id='comprarDetalles'>
+
+                        <a href="/comprar/<%=producto[x].producto_id%>"><img src="/img/carrito.png" width='30'></a>
+
+                        <a href="/detalles/<%=producto[x].producto_id%>" style='margin-top:7px;margin-left:8px;'><img src="/img/img.png" width="30"></a> 
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+        <% } %>
+        <!-------------------->
+        <table class='table'>
+
+            <thead>
+                <tr style='border:1px solid black'>
+
+                    <th class='column'>Imagen</th>
+                    <th class='column'>Nombre</th>
+                    <th class='column'>Codigo</th>
+                    <th class='column'>Precio</th>
+                    <th class='column'>Descripcion</th>
+                    <th class='column'>Calidad</th>
+                    <th class='column'>Cantidad</th>
+                    <th class='column'>Categoria</th>
+                    <th class='column'>Opciones</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <%for(let u = 0;u < producto.length;u++){%>
+                <tr class='tr' style='border:1px solid black'><!--ul-->
+                    <!--li-->
+                    <td class='column'><img src="<%= producto[u].imagen_url %>" style='width:100%;height:17vh'></td>
+                    <td class='column'><%= producto[u].nombre %></td>
+                    <td class='column'><%= producto[u].codigo %></td>
+                    <td class='column'><%= producto[u].precio %></td>
+                    <td class='column'><%= producto[u].descripcion %></td>
+                    <td class='column'><%= producto[u].calidad %></td>
+                    <td class='column'><%= producto[u].cantidad %></td>
+                    <td class='column'><%= producto[u].categoria_id %></td>
+                    <td>
+
+                        <a href="/comprar/<%=producto[u].producto_id%>"><img src="/img/carrito.png" width='30'></a>
+
+                        <a href="/detalles/<%=producto[u].producto_id%>" style='margin-top:7px;margin-left:8px;'><img src="/img/img.png" width="30"></a>
+
+                    </td>
+                </tr> 
+                <% } %>
+            </tbody>
+        </table>
+        <%for(let l = 0 ; l < producto.length; l++){%>
+        <ul class='ULtabla3'>
+            <li class='LItabla3'><img src="<%= producto[l].imagen_url %>" style='width:40%;'></li>
+            <li class='LItabla3'><span>Nombre: </span><span><%= producto[l].nombre %></span></li>
+            <li class='LItabla3'><span>Codigo: </span><span><%= producto[l].codigo %></span> </li>
+            <li class='LItabla3'><span>Precio: </span><span style='color:green'><%= producto[l].precio %> $</span> </li>
+            <li class='LItabla3'><span>Descripcion: </span><span><%= producto[l].descripcion %></span></li>
+            <li class='LItabla3'><span>Calidad: </span><span><%= producto[l].calidad %></span></li>
+            <li class='LItabla3'><span>Cantidad: </span><span><%= producto[l].cantidad %></span></li>
+            <li class='LItabla3'><span>Categoria: </span><span><%= producto[l]. categoria_id %></span></li>
+            <li class='LItabla3'>
+                <div style='display:flex;justify-content:center;align-items:center;width:20%;'>
+                    <a href="/comprar/<%=producto[l].producto_id%>"><img src="/img/carrito.png" width='30'></a>
+                </div>
+                <div style='display:flex;justify-content:center;align-items:center;width:20%;'>
+                   <a href="/detalles/<%=producto[l].producto_id%>" style='margin-top:7px;margin-left:8px;'><img src="/img/img.png" style='width:100%;'></a>
+               </div>
+
+           </li>
+       </ul>
+       <% } %>
+   </div>
+
+</div>
+</div>
+</section>
+
+
+
+</section>
+</div>
+<script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<!-- Core theme JS-->
+<script src="/js/script.js"></script>
+
+<script type="text/javascript">
+    // Conectar con el servidor Socket.IO
+    const socket = io(); // Reemplaza con la URL de tu 
+    let compuerta = true;
+
+
+
+
+    socket.on('connect',()=>{
+
+       console.log('Usuario conectado desde el cliente');
+
+       fetch('/transaction')
+       .then(response=>response.json())
+       .then(res=>{
+
+        if(typeof res !== 'undefined'){
+
+            if(confirm(`Message:${res.transaction.message}
+                Numero de transaction: ${res.transaction.data.transaction_id}
+                Fecha : ${res.transaction.data.date}
+                Referencia : ${res.transaction.data.reference}
+                Moneda : ${res.transaction.data.currency}
+                Amount : ${res.transaction.data.amount}
+                `)){
+             fetch('/eliminarTransaction')
+         .then(res=> res.json())
+         .then(response=>{
+            console.log(`Message : ${response.message}`);
+        });
+     }else{
+         fetch('/eliminarTransaction')
+         .then(res=> res.json())
+         .then(response=>{
+            console.log(`Message : ${response.message}`);
+        });
+     }
+ }else{
+    console.log('No se recibio transaction');
+}
+})
+
+       socket.on('mensajeServer',(data)=>{
+
+        console.log(`Mensaje recibido del server: ${data}`);
+
+
+
+    })
+
+   })
+</script>
+
+</body>
+</html>
+
+

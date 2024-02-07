@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/img/reloj.png" />
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="/css/update.css">
+  <style type="text/css">
+    h1{
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+<h1 id="eliminar">¿Esta seguro que desea eliminar el registro?</h1>
+
+<form action="/delete/<%=modelo.producto_id%>" method="post">
+  <div class='flex-principal'>
+    <%- include('editor') -%>
+
+    <div id="cancelar">
+  <input type="submit" value="Eliminar" class="eliminarRegistro">
+  <input type="button" value='cancelar' class="eliminarRegistro" onclick='redireccionar()'>
+</div>
+    
+  </div>
+</form>
+<script type="text/javascript">
+  
+  function redireccionar(){
+  window.location.href='/productos';
+  }
+
+</script>
+</body>
+
+</html>
+
+
+
+

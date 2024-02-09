@@ -773,7 +773,7 @@ function enviarEmailRecuperacion(req,res){
  res.cookie('securityToken',token, { httpOnly: true, secure: true });
 
   // Crear la URL de recuperación de contraseña
-  const recoveryURL = `http://ventasonlinerandis.onrender.com/restablecer?token=${token}`;
+  const recoveryURL = `https://webfunesrafael.onrender.com/restablecer?token=${token}`;
 
   // Enviar el correo electrónico de recuperación de contraseña
   const mailOptions = {
